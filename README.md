@@ -4,6 +4,13 @@
 独立技能项目：模板格式检测 → 清单确认 → 目标分析 → dry-run → 应用 → 验证，全程原件只读。
 **v1.2.0 新增**：可上传老师发布的**格式要求文档/图片**（docx/pdf/txt/截图，或直接粘贴文字），
 解析为结构化规则并以更高优先级合并——与模板不一致处按要求执行并明确标出。
+
+| 入口 | 说明 |
+|------|------|
+| 🌐 [在线试用](https://fylgls.github.io/docx-format-transfer/) | 网页版，核心在浏览器本地运行（Pyodide），文档不上传服务器；点「载入示例文档试用」无需自备文件 |
+| ⬇️ [下载本地版](https://github.com/FYLGls/docx-format-transfer/releases/latest) | 解压双击 `启动界面.bat`（功能最全：图片 OCR 要求、局域网部署） |
+| 🧩 安装为 ZCode skill | 下载包内双击 `install-skill.bat`，之后对 ZCode 说"按模板改格式" |
+
 分发形态对齐"码文"（code-for-word）：**可下载发布包 + 自托管网页版 + ZCode skill** 三用。
 
 ## 发布包（可下载）
