@@ -1,0 +1,7 @@
+{
+ "headings.levels_in_use": [
+  1,
+  2
+ ],
+ "headings.level2.numbering.pattern": "{n}.{n2}"
+}

@@ -1,0 +1,126 @@
+{
+  "source_file": "md_paste.docx",
+  "headings": [],
+  "captions": [
+    {
+      "idx": 14,
+      "kind": "table",
+      "text": "表1数据清洗流程对照",
+      "num": "1",
+      "sep": ""
+    },
+    {
+      "idx": 18,
+      "kind": "table",
+      "text": "表2缺失值处理方案",
+      "num": "2",
+      "sep": ""
+    },
+    {
+      "idx": 21,
+      "kind": "figure",
+      "text": "图1信用好客户约 93%",
+      "num": "1",
+      "sep": ""
+    },
+    {
+      "idx": 24,
+      "kind": "figure",
+      "text": "图2坏账率随年龄单调下降",
+      "num": "2",
+      "sep": ""
+    },
+    {
+      "idx": 27,
+      "kind": "figure",
+      "text": "图3坏账客户月收入中位数",
+      "num": "3",
+      "sep": ""
+    }
+  ],
+  "figures": [
+    {
+      "idx": 20,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        15.0
+      ]
+    },
+    {
+      "idx": 23,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        15.0
+      ]
+    },
+    {
+      "idx": 26,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        15.0
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "flow_idx": 13,
+      "rows": 7,
+      "cols": 3
+    },
+    {
+      "flow_idx": 17,
+      "rows": 3,
+      "cols": 3
+    }
+  ],
+  "specials": [],
+  "code_blocks": [
+    [
+      8,
+      9,
+      10,
+      11
+    ]
+  ],
+  "ambiguities": [
+    {
+      "idx": 1,
+      "type": "possible-heading",
+      "text": "实验目的",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 5,
+      "type": "possible-heading",
+      "text": "实验内容",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 7,
+      "type": "possible-heading",
+      "text": "数据读取与清洗",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 15,
+      "type": "possible-heading",
+      "text": "数据统计",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 19,
+      "type": "possible-heading",
+      "text": "数据可视化",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 29,
+      "type": "possible-heading",
+      "text": "实验结论",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    }
+  ]
+}

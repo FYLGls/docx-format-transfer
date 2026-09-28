@@ -1,0 +1,19 @@
+{
+  "source_file": "template.docx",
+  "headings": [
+    {
+      "idx": 0,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "2 模型推导"
+    }
+  ],
+  "captions": [],
+  "figures": [],
+  "tables": [],
+  "specials": [],
+  "code_blocks": [],
+  "ambiguities": []
+}

@@ -1,0 +1,28 @@
+{
+  "source_file": "template.docx",
+  "headings": [
+    {
+      "idx": 0,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "1 内容"
+    }
+  ],
+  "captions": [],
+  "figures": [
+    {
+      "idx": 2,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        11.0
+      ]
+    }
+  ],
+  "tables": [],
+  "specials": [],
+  "code_blocks": [],
+  "ambiguities": []
+}

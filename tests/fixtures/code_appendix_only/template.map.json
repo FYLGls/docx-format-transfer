@@ -1,0 +1,43 @@
+{
+  "source_file": "template.docx",
+  "headings": [
+    {
+      "idx": 0,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "1 方法"
+    }
+  ],
+  "captions": [],
+  "figures": [],
+  "tables": [
+    {
+      "flow_idx": 3,
+      "rows": 1,
+      "cols": 1
+    },
+    {
+      "flow_idx": 4,
+      "rows": 1,
+      "cols": 1
+    }
+  ],
+  "specials": [
+    {
+      "idx": 2,
+      "role": "appendix",
+      "text": "附录"
+    }
+  ],
+  "code_blocks": [
+    [
+      3
+    ],
+    [
+      4
+    ]
+  ],
+  "ambiguities": []
+}

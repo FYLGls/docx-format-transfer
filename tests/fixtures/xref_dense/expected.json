@@ -1,0 +1,7 @@
+{
+ "captions.figure.numbering.chapter_linked": true,
+ "cross_references.count": {
+  "op": ">=",
+  "value": 4
+ }
+}

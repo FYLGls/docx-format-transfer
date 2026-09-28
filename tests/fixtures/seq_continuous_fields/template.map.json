@@ -1,0 +1,59 @@
+{
+  "source_file": "template.docx",
+  "headings": [
+    {
+      "idx": 0,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "1 内容"
+    },
+    {
+      "idx": 4,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "2 内容"
+    }
+  ],
+  "captions": [
+    {
+      "idx": 2,
+      "kind": "figure",
+      "text": "图1 连续编号题注",
+      "num": "1",
+      "sep": " "
+    },
+    {
+      "idx": 6,
+      "kind": "figure",
+      "text": "图1 连续编号题注",
+      "num": "1",
+      "sep": " "
+    }
+  ],
+  "figures": [
+    {
+      "idx": 1,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        12.0
+      ]
+    },
+    {
+      "idx": 5,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        12.0
+      ]
+    }
+  ],
+  "tables": [],
+  "specials": [],
+  "code_blocks": [],
+  "ambiguities": []
+}

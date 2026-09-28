@@ -1,0 +1,5 @@
+{
+ "headings.level1.numbering.pattern": "第{n}章",
+ "captions.figure.numbering.chapter_linked": true,
+ "captions.figure.separator": " "
+}

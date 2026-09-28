@@ -1,0 +1,12 @@
+{
+ "page.margins.top_cm": 2.0,
+ "page.margins.left_cm": 2.0,
+ "body.size_pt.value": 10.5,
+ "figures.width_rule.value": 10.0,
+ "captions.figure.position": "below",
+ "captions.figure.separator": "：",
+ "captions.table.position": "above",
+ "captions.table.separator": "：",
+ "captions.figure.size_pt.value": 9.0,
+ "tables.three_line.enabled": true
+}

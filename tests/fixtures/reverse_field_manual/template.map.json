@@ -1,0 +1,84 @@
+{
+  "source_file": "template.docx",
+  "headings": [
+    {
+      "idx": 0,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "1 研究内容与方案"
+    },
+    {
+      "idx": 7,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "2 研究内容与方案"
+    }
+  ],
+  "captions": [
+    {
+      "idx": 3,
+      "kind": "figure",
+      "text": "图1 系统架构",
+      "num": "1",
+      "sep": " "
+    },
+    {
+      "idx": 5,
+      "kind": "table",
+      "text": "表1 参数设置",
+      "num": "1",
+      "sep": " "
+    },
+    {
+      "idx": 10,
+      "kind": "figure",
+      "text": "图3 系统架构",
+      "num": "3",
+      "sep": " "
+    },
+    {
+      "idx": 12,
+      "kind": "table",
+      "text": "表3 参数设置",
+      "num": "3",
+      "sep": " "
+    }
+  ],
+  "figures": [
+    {
+      "idx": 2,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        12.5
+      ]
+    },
+    {
+      "idx": 9,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        12.5
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "flow_idx": 6,
+      "rows": 2,
+      "cols": 2
+    },
+    {
+      "flow_idx": 13,
+      "rows": 2,
+      "cols": 2
+    }
+  ],
+  "specials": [],
+  "code_blocks": [],
+  "ambiguities": []
+}

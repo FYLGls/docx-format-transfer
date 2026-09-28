@@ -1,0 +1,43 @@
+{
+  "source_file": "template.docx",
+  "headings": [
+    {
+      "idx": 0,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "1 章节"
+    },
+    {
+      "idx": 1,
+      "level": 2,
+      "style_level": 2,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "1.1 小节"
+    },
+    {
+      "idx": 3,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "2 章节"
+    },
+    {
+      "idx": 4,
+      "level": 2,
+      "style_level": 2,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "2.1 小节"
+    }
+  ],
+  "captions": [],
+  "figures": [],
+  "tables": [],
+  "specials": [],
+  "code_blocks": [],
+  "ambiguities": []
+}

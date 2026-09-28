@@ -1,0 +1,33 @@
+{
+  "source_file": "template.docx",
+  "headings": [
+    {
+      "idx": 0,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "1 实验"
+    }
+  ],
+  "captions": [
+    {
+      "idx": 3,
+      "kind": "table",
+      "text": "表1 大规模实验结果",
+      "num": "1",
+      "sep": " "
+    }
+  ],
+  "figures": [],
+  "tables": [
+    {
+      "flow_idx": 4,
+      "rows": 2,
+      "cols": 9
+    }
+  ],
+  "specials": [],
+  "code_blocks": [],
+  "ambiguities": []
+}

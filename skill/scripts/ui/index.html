@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>docx-format-transfer · 模板格式检测与套用</title>
+<style>
+:root{
+  --bg:#f5f6f8;--card:#fff;--line:#e3e6ea;--ink:#26292e;--sub:#7a8087;
+  --blue:#2f6fed;--blue-bg:#eef3fe;--green:#1d9e5f;--green-bg:#e9f8f0;
+  --amber:#c07f00;--amber-bg:#fdf3e0;--red:#d43d3d;--red-bg:#fdecec;
+  --violet:#7a4fd3;--gray:#8a9098;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.6 "Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink)}
+header{display:flex;align-items:center;gap:14px;padding:10px 18px;background:#fff;border-bottom:1px solid var(--line)}
+header h1{font-size:17px;font-weight:600}
+header .tag{font-size:12px;color:var(--sub)}
+main{display:flex;gap:14px;padding:14px 18px;height:calc(100vh - 55px)}
+/* ---------- 左栏 ---------- */
+#left{width:330px;min-width:300px;display:flex;flex-direction:column;gap:12px;overflow:auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.card h3{font-size:13px;color:var(--sub);font-weight:600;margin-bottom:8px}
+.filebox{display:flex;flex-direction:column;gap:10px}
+.frow label{display:block;font-size:12px;color:var(--sub);margin-bottom:3px}
+.frow .fline{display:flex;gap:6px}
+.frow input[type=text]{flex:1;border:1px solid var(--line);border-radius:7px;padding:6px 8px;font-size:13px}
+.frow input[type=file]{display:none}
+button{border:none;border-radius:7px;padding:7px 14px;font-size:13px;cursor:pointer;background:var(--blue);color:#fff}
+button.ghost{background:#fff;color:var(--blue);border:1px solid var(--blue)}
+button.big{width:100%;padding:10px;font-size:15px;margin-top:6px}
+button:disabled{background:#b9c6e4;cursor:not-allowed}
+button.ghost:disabled{color:#b9c6e4;border-color:#b9c6e4}
+#progress{list-style:none;font-size:12.5px}
+#progress li{display:flex;gap:7px;padding:2px 0;color:var(--sub)}
+#progress li::before{content:"○";color:var(--gray)}
+#progress li.ok::before{content:"●";color:var(--green)}
+#progress li .t{color:var(--ink)}
+#log{font-size:12.5px;max-height:300px;overflow:auto;white-space:pre-wrap;color:var(--sub)}
+#log b{color:var(--ink)}
+.outlink{display:inline-block;margin-top:8px;color:var(--blue);text-decoration:none;font-weight:600}
+/* ---------- 右栏（规则清单） ---------- */
+#right{flex:1;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+#rulebar{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line);background:#fbfcfd}
+#rulebar h2{font-size:14px;font-weight:600}
+#rulebar .hint{font-size:12px;color:var(--sub);flex:1}
+#rulebar button{padding:5px 10px;font-size:12px}
+#rules{flex:1;overflow:auto;padding:6px 10px 30px}
+.stephead{display:flex;align-items:center;gap:8px;margin:14px 4px 6px;font-size:12.5px;color:var(--sub)}
+.stephead::after{content:"";flex:1;height:1px;background:var(--line)}
+.stephead .spin{width:12px;height:12px;border:2px solid var(--blue);border-top-color:transparent;border-radius:50%;animation:r 0.8s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}
+.rule{display:flex;align-items:center;gap:8px;padding:7px 8px;border:1px solid transparent;border-radius:8px}
+.rule:hover{background:#f7f9fc;border-color:var(--line)}
+.rule.disabled{opacity:.45}
+.rule .idx{width:24px;text-align:center;font-size:12px;color:var(--gray)}
+.rule .mv{display:flex;flex-direction:column;line-height:0}
+.rule .mv button{padding:1px 5px;background:none;color:var(--gray);font-size:10px;border:1px solid var(--line);border-radius:4px}
+.rule .mv button:hover{color:var(--blue);border-color:var(--blue)}
+.rule input[type=checkbox]{width:15px;height:15px;accent-color:var(--blue)}
+.chip{font-size:11px;padding:1px 7px;border-radius:9px;white-space:nowrap}
+.chip.c1{background:var(--blue-bg);color:var(--blue)}
+.chip.c2{background:#f0ebfb;color:var(--violet)}
+.chip.c3{background:#e8f4fd;color:#1774b8}
+.chip.c4{background:var(--amber-bg);color:var(--amber)}
+.chip.c5{background:#eef1f3;color:var(--gray)}
+.rname{font-size:13.5px;min-width:190px}
+.rname small{display:block;color:var(--sub);font-size:11px}
+.rval{flex:1;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.rval input[type=text]{width:130px;border:1px solid var(--line);border-radius:6px;padding:3px 7px;font-size:12.5px}
+.rval select{border:1px solid var(--line);border-radius:6px;padding:3px 5px;font-size:12.5px}
+.evid{font-size:11.5px;color:var(--sub);max-width:210px}
+.pgflag{font-size:11px;color:var(--amber)}
+.status{width:92px;text-align:right;font-size:12px;color:var(--sub)}
+.vch{font-size:11.5px;width:80px;text-align:center;border-radius:8px;padding:1px 0}
+.vch.pass{background:var(--green-bg);color:var(--green)}
+.vch.warn{background:var(--amber-bg);color:var(--amber)}
+.vch.fail{background:var(--red-bg);color:var(--red)}
+.warnline{font-size:11px;color:var(--red);width:100%;padding-left:40px}
+.pend{color:var(--gray)}
+#empty{margin:60px auto;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<header>
+  <h1>📄 模板格式检测与一键套用 <span id="verTag" class="tag"></span></h1>
+  <span class="tag">上传模板 → 右侧逐条列出格式要求（自动排序，可勾选/改值/调序）→ 点击修改 → 逐条执行与验证</span>
+</header>
+<main>
+  <div id="left">
+    <div class="card">
+      <h3>文件</h3>
+      <div class="filebox">
+        <div class="frow">
+          <label>模板文档（格式来源）</label>
+          <div class="fline">
+            <input type="text" id="tplPath" placeholder="路径，或点右侧上传">
+            <button class="ghost" onclick="pick('tplPath')">上传</button>
+          </div>
+        </div>
+        <div class="frow">
+          <label>目标文档（待修改）</label>
+          <div class="fline">
+            <input type="text" id="tgtPath" placeholder="路径，或点右侧上传">
+            <button class="ghost" onclick="pick('tgtPath')">上传</button>
+          </div>
+        </div>
+        <div class="frow">
+          <label>格式要求 文档/图片（可选，docx/pdf/txt/图片，优先级高于模板）</label>
+          <div class="fline">
+            <input type="text" id="reqPath" placeholder="路径，或点右侧上传">
+            <button class="ghost" onclick="pick('reqPath')">上传</button>
+          </div>
+        </div>
+        <div class="frow">
+          <label><a href="javascript:void(0)" onclick="togglePaste()" style="color:var(--blue)">▸ 粘贴要求文字（可选）</a></label>
+          <textarea id="reqText" rows="4" placeholder="例：正文宋体小四，1.5倍行距，页边距上下左右均为2.5厘米"
+            style="display:none;width:100%;border:1px solid var(--line);border-radius:7px;padding:6px 8px;font-size:12.5px;resize:vertical"></textarea>
+        </div>
+        <input type="file" id="filePick" accept=".docx,.pdf,.txt,.md,.png,.jpg,.jpeg">
+        <button class="big" id="btnDetect" onclick="detect()">① 检测模板格式</button>
+        <button class="big" id="btnDetectTgt" onclick="detectTarget()" disabled>② 分析目标文档</button>
+        <button class="big" id="btnApply" onclick="applyAll()" disabled>③ 开始修改（按右侧顺序执行）</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>检测进度</h3>
+      <ul id="progress"></ul>
+    </div>
+    <div class="card">
+      <h3>执行日志</h3>
+      <div id="log">等待操作…</div>
+    </div>
+  </div>
+
+  <div id="right">
+    <div id="rulebar">
+      <h2>格式要求清单</h2>
+      <span class="hint">已按依赖自动排序：容器→样式→内容→<b style="color:var(--amber)">分页（从上到下单遍检查，排最后）</b>→收尾；可用 ▲▼ 调整顺序，去掉勾选即跳过，值可直接修改</span>
+      <button class="ghost" onclick="resetOrder()">恢复自动排序</button>
+      <button class="ghost" onclick="toggleAll(true)">全选</button>
+      <button class="ghost" onclick="toggleAll(false)">全不选</button>
+    </div>
+    <div id="rules"><div id="empty">先在左侧选择模板文档并点击「检测模板格式」，这里会逐条列出检测到的每一项格式要求</div></div>
+  </div>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+let RULES=[],ORDER=[],PROFILE=null,STEPS=[],rows=[],pickTarget=null;
+const stepOf=r=>r.paths[0].split(".")[0];
+const CATC={"容器":"c1","样式":"c2","内容":"c3","分页":"c4","收尾":"c5"};
+
+async function boot(){
+  const r=await fetch("/api/rules").then(x=>x.json());
+  RULES=r.rules;ORDER=r.default_order;
+  $("verTag").textContent="v"+(r.version||"dev");
+}
+function pick(id){pickTarget=id;$("filePick").click();}
+$("filePick").addEventListener("change",async e=>{
+  const f=e.target.files[0];if(!f)return;
+  const res=await fetch("/api/upload?name="+encodeURIComponent(f.name),
+    {method:"POST",body:await f.arrayBuffer()}).then(x=>x.json());
+  $(pickTarget).value=res.path;e.target.value="";
+  log("已上传 "+f.name);
+});
+
+/* ---------------- 流式读取 NDJSON ---------------- */
+async function readND(resp,cb){
+  const rd=resp.body.getReader(),dec=new TextDecoder();let buf="";
+  for(;;){
+    const{done,value}=await rd.read();if(done)break;
+    buf+=dec.decode(value,{stream:true});
+    let i;while((i=buf.indexOf("\n"))>=0){cb(JSON.parse(buf.slice(0,i)));buf=buf.slice(i+1);}
+  }
+}
+
+/* ---------------- ① 检测模板 ---------------- */
+function togglePaste(){
+  const t=$("reqText");t.style.display=t.style.display==="none"?"block":"none";
+}
+async function detect(){
+  const path=$("tplPath").value.trim();
+  if(!path)return log("请先填写模板文档路径");
+  PROFILE=null;rows=[];STEPS=[];$("rules").innerHTML="";$("progress").innerHTML="";
+  $("btnApply").disabled=true;$("btnDetect").disabled=true;
+  prog(`正在检测 ${path.split(/[\\/]/).pop()} …`);
+  const seen=new Set();let conflicts=[];
+  const body={path,
+    requirement_path:$("reqPath").value.trim(),
+    requirement_text:$("reqText").value.trim()};
+  await readND(await fetch("/api/detect",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}),ev=>{
+    if(ev.type==="step"){
+      STEPS.push(ev);addStepHead(ev.key,ev.label,true);
+      for(const r of RULES)if(stepOf(r)===ev.key&&!seen.has(r.id)){seen.add(r.id);addRuleRow(r,ev.data);}
+    }else if(ev.type==="requirement"){
+      if(ev.error)return log("⚠ "+ev.error);
+      log(`格式要求：合并 <b>${ev.applied}</b> 条规则`+(ev.unparsed.length?`，${ev.unparsed.length} 句未解析`:""));
+      ev.unparsed.slice(0,4).forEach(u=>log("   · 未解析："+u.slice(0,50)));
+      conflicts=ev.conflicts||[];
+      ev.conflicts.forEach(c=>log(`   ⚠ ${c.path}：模板 ${c.template} vs 要求 ${c.requirement} → 按要求`));
+    }else if(ev.type==="done"){
+      PROFILE=ev.profile;
+      prog(`检测完成（${ev.seconds}s）：${ev.map_summary.headings} 标题 / ${ev.map_summary.figures} 图 / ${ev.map_summary.tables} 表`,"ok");
+      // 分页/收尾规则在数据齐后插入（排后）
+      for(const r of RULES)if(!seen.has(r.id)){seen.add(r.id);addRuleRow(r,null);}
+      renderIdx();markReqRows(conflicts);checkOrderWarn();
+      (PROFILE.flags||[]).forEach(f=>log("⚠ "+f));
+      $("btnDetectTgt").disabled=false;$("btnDetect").disabled=false;
+    }else if(ev.type==="error"){log("❌ "+ev.message);$("btnDetect").disabled=false;}
+  });
+  log(`检测到 ${rows.length} 条格式要求，请检查右侧清单`);
+}
+function markReqRows(conflicts){
+  // 用合并后的档案刷新行值；来源为"格式要求"的行加徽章；有冲突的行加琥珀提示
+  const cmap={};conflicts.forEach(c=>cmap[c.path]=c);
+  rows.forEach(r=>{
+    const rule=RULES.find(x=>x.id===r.dataset.id);if(!rule)return;
+    const p0=rule.paths[0];
+    const meta=getValFromProfile(p0);
+    if(meta!=null){
+      const inp=r.querySelector("input[data-path]");
+      const sel=r.querySelector("select[data-bool]");
+      if(inp){inp.value=fmtVal(meta.v);inp.placeholder=fmtVal(meta.v);}
+      else if(sel){/* 布尔行三态固定，不强改 */}
+      else{const sp=r.querySelector(".rval span");if(sp)sp.textContent=fmtVal(meta.v);}
+    }
+    let reqHit=false,confHit=null;
+    rule.paths.forEach(p=>{
+      const m=getValFromProfile(p);
+      if(m&&m.src==="格式要求")reqHit=true;
+      const key=Object.keys(cmap).find(k=>k===p||k.startsWith(p+".")||p.startsWith(k+"."));
+      if(key)confHit=cmap[key];
+    });
+    if(reqHit){
+      const chip=document.createElement("span");chip.className="chip c2";chip.textContent="要求";
+      chip.title="来自格式要求文档/粘贴文字，优先级高于模板实测";
+      r.querySelector(".chip").after(chip);
+    }
+    if(confHit){
+      const w=document.createElement("div");w.className="warnline";w.style.display="block";
+      w.style.color="var(--amber)";
+      w.textContent=`⚠ 与模板不一致：模板 ${confHit.template} / 要求 ${confHit.requirement} → 按要求执行`;
+      r.appendChild(w);
+    }
+  });
+}
+/* ---------------- ② 分析目标 ---------------- */
+async function detectTarget(){
+  const path=$("tgtPath").value.trim();
+  if(!path)return log("请先填写目标文档路径");
+  $("btnDetectTgt").disabled=true;
+  prog("分析目标文档…");
+  await readND(await fetch("/api/detect",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({path})}),ev=>{
+    if(ev.type==="done"){
+      const m=ev.map_summary;
+      prog(`目标分析完成：${m.headings} 标题 / ${m.captions} 题注 / ${m.figures} 图 / ${m.tables} 表`,"ok");
+      if(m.ambiguities.length){
+        log(`⚠ 目标有 ${m.ambiguities.length} 处疑似标题/题注待确认（本界面按自动判断执行，命令行可用 --map 人工纠正）：`);
+        m.ambiguities.slice(0,5).forEach(a=>log(`   · [${a.idx}] ${a.text}（${a.reason}）`));
+      }
+      $("btnApply").disabled=false;
+    }else if(ev.type==="error")log("❌ "+ev.message);
+    $("btnDetectTgt").disabled=false;
+  });
+}
+
+/* ---------------- 规则行渲染 ---------------- */
+function addStepHead(key,label,active){
+  if($("sh_"+key))return;
+  const d=document.createElement("div");d.className="stephead";d.id="sh_"+key;
+  d.innerHTML=(active?'<span class="spin"></span>':"")+`<b>${label}</b>`;
+  $("rules").appendChild(d);
+}
+function getVal(obj,path){
+  let cur=obj;for(const p of path.split(".")){if(cur==null)return null;cur=cur[p];}
+  if(cur&&typeof cur==="object"&&"value"in cur&&!("rule"in cur))
+    return{v:cur.value,conf:cur.confidence,ev:cur.evidence,src:cur.source};
+  if(cur&&typeof cur==="object")return{v:cur,conf:null,ev:null,src:cur.source};
+  return{v:cur,conf:null,ev:null,src:null};
+}
+function fmtVal(v){
+  if(v==null)return"—";
+  if(typeof v==="object"){if(v.rule!=null&&v.value==null)return v.rule;if(v.value!=null)return v.value;return JSON.stringify(v);}
+  return String(v);
+}
+function addRuleRow(rule,stepData){
+  const o=stepData?getVal(stepData,rule.paths[0]):{v:null};
+  const main=rule.paths[0];
+  const meta=main.includes(".")
+    ? getValFromProfile(main)
+    : null;
+  const row=document.createElement("div");row.className="rule";row.dataset.id=rule.id;
+  const isBool=meta!=null&&typeof meta.v==="boolean";
+  const editable=["page.size.width_cm","page.size.height_cm","page.margins.top_cm","page.margins.bottom_cm","page.margins.left_cm","page.margins.right_cm",
+    "captions.figure.separator","captions.table.separator","captions.figure.size_pt","captions.table.size_pt","body.size_pt",
+    "tables.cell_size_pt","figures.width_rule","page_numbers.body.start"].includes(main);
+  row.innerHTML=`
+    <span class="idx"></span>
+    <span class="mv"><button onclick="mv('${rule.id}',-1)" title="上移">▲</button><button onclick="mv('${rule.id}',1)" title="下移">▼</button></span>
+    <input type="checkbox" checked onchange="this.closest('.rule').classList.toggle('disabled',!this.checked)">
+    <span class="chip ${CATC[rule.cat]}">${rule.cat}</span>
+    <span class="rname">${rule.name}${rule.paginated?'<span class="pgflag">◀ 分页类·从上到下单遍，自动排后</span>':""}${rule.desc?`<small>${rule.desc}</small>`:""}</span>
+    <span class="rval">${
+      editable?`<input type="text" data-path="${main}" value="${fmtVal(meta?meta.v:null)}" placeholder="${fmtVal(meta?meta.v:null)}">`
+      :isBool?boolSelect(main,meta.v)
+      :`<span style="font-size:12.5px">${fmtVal(meta?meta.v:null)}</span>`
+    }</span>
+    <span class="evid">${meta&&meta.ev?meta.conf+" · "+meta.ev:(stepData?"":"等待检测")}</span>
+    <span class="status pend">待执行</span>
+    <span class="vch" style="display:none"></span>
+    <div class="warnline" style="display:none"></div>`;
+  rows.push(row);$("rules").appendChild(row);
+  renderIdx();checkOrderWarn();
+}
+function getValFromProfile(path){return PROFILE?getVal(PROFILE,path):null;}
+function boolSelect(path,v){
+  const s=v===true?"开":v===false?"关":"";
+  return `<select data-bool="${path}">
+    <option value="">按模板（${s||"未检出"}）</option>
+    <option value="on">强制开</option><option value="off">强制关</option></select>`;
+}
+function renderIdx(){rows.forEach((r,i)=>r.querySelector(".idx").textContent=i+1);}
+function mv(id,d){
+  const i=rows.findIndex(r=>r.dataset.id===id);const j=i+d;
+  if(i<0||j<0||j>=rows.length)return;
+  const[r]=rows.splice(i,1);rows.splice(j,0,r);
+  const el=rows[j];d<0?el.parentNode.insertBefore(el,rows[j+1]):el.parentNode.insertBefore(el,rows[j-1].nextSibling);
+  renderIdx();checkOrderWarn();
+}
+function checkOrderWarn(){
+  let lastContent=-1;
+  rows.forEach((r,i)=>{if(["容器","样式","内容"].includes(r.querySelector(".chip").textContent))lastContent=i;});
+  rows.forEach((r,i)=>{
+    const w=r.querySelector(".warnline");
+    if(r.querySelector(".pgflag")&&i<=lastContent&&lastContent>=0&&i<lastContent+1){
+      w.style.display="block";w.textContent="⚠ 分页类规则放在内容类之前：内容修改会改变分页，建议排后（可继续执行，结果可能需重跑）";
+    }else w.style.display="none";
+  });
+}
+function resetOrder(){
+  rows.sort((a,b)=>ORDER.indexOf(a.dataset.id)-ORDER.indexOf(b.dataset.id));
+  rows.forEach(r=>$("rules").appendChild(r));renderIdx();checkOrderWarn();
+}
+function toggleAll(on){rows.forEach(r=>{const c=r.querySelector("input[type=checkbox]");c.checked=on;r.classList.toggle("disabled",!on);});}
+
+/* ---------------- ③ 逐条执行 ---------------- */
+async function applyAll(){
+  const target=$("tgtPath").value.trim();
+  if(!target||!PROFILE)return log("请先完成 ① 检测模板 和 ② 分析目标");
+  const order=rows.map(r=>r.dataset.id);
+  const disabled=rows.filter(r=>!r.querySelector("input[type=checkbox]").checked).map(r=>r.dataset.id);
+  const overrides={};
+  rows.forEach(r=>{
+    const inp=r.querySelector("input[data-path]");
+    if(inp&&inp.value.trim()!==""&&inp.value!==inp.placeholder){
+      const orig=getValFromProfile(inp.dataset.path);
+      const raw=inp.value.trim();
+      overrides[inp.dataset.path]=typeof(orig&&orig.v)==="number"&&!isNaN(Number(raw))?Number(raw):raw;
+    }
+    const sel=r.querySelector("select[data-bool]");
+    if(sel){if(sel.value==="on")overrides[sel.dataset.bool]=true;if(sel.value==="off")overrides[sel.dataset.bool]=false;}
+  });
+  rows.forEach(r=>{r.querySelector(".status").textContent="排队中";r.querySelector(".status").className="status pend";
+    const v=r.querySelector(".vch");v.style.display="none";});
+  $("btnApply").disabled=true;log(`开始执行 ${order.length-disabled.length} 条规则（顺序=右侧清单自上而下）…`);
+  let outPath="";
+  await readND(await fetch("/api/apply",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({target,profile:PROFILE,order,disabled,overrides})}),ev=>{
+    if(ev.type==="rule"){
+      const row=rows.find(r=>r.dataset.id===ev.id);if(!row)return;
+      const st=row.querySelector(".status");
+      if(ev.status==="running"){st.textContent="执行中…";st.className="status";st.style.color="var(--blue)";}
+      else if(ev.status==="done"){st.textContent=`✅ ${ev.changes} 处`;st.className="status";st.style.color="var(--green)";}
+      else if(ev.status==="skipped"){st.textContent="⏭ 跳过";st.className="status pend";}
+      else{st.textContent="❌ 失败";st.className="status";st.style.color="var(--red)";}
+    }else if(ev.type==="saved"){
+      outPath=ev.output;log(`写入完成：共 <b>${ev.changes}</b> 处修改`);
+      (ev.notes||[]).slice(0,6).forEach(n=>log("· "+n));
+    }else if(ev.type==="verify"){
+      for(const[rid,agg]of Object.entries(ev.by_rule)){
+        const row=rows.find(r=>r.dataset.id===rid);if(!row)continue;
+        const v=row.querySelector(".vch");v.style.display="inline-block";
+        v.className="vch "+(agg.fail?"fail":agg.warn?"warn":"pass");
+        v.textContent=`验证 ✅${agg.pass} ⚠${agg.warn} ❌${agg.fail}`;
+        if(agg.fail)row.querySelector(".status").title=agg.details.join("\n");
+      }
+      log(`验证：通过 ${ev.pass} · 失败 ${ev.fail}（共 ${ev.checks} 项）${ev.fail?"：见各行红标，悬停查看":""}`);
+      if(outPath){
+        const a=document.createElement("a");a.className="outlink";a.href="#";
+        a.textContent="📄 打开输出文件所在位置："+outPath;
+        a.onclick=()=>{alert("输出文件：\n"+outPath+"\n修改报告：\n"+outPath.replace(".formatted.docx",".changes.md"));return false;};
+        $("log").appendChild(document.createElement("br"));$("log").appendChild(a);
+      }
+    }else if(ev.type==="error")log("❌ "+ev.message);
+  });
+  $("btnApply").disabled=false;
+}
+
+/* ---------------- 杂项 ---------------- */
+function prog(t,ok){
+  const li=document.createElement("li");if(ok)li.className="ok";
+  li.innerHTML=`<span class="t">${t}</span>`;$("progress").appendChild(li);
+}
+function log(t){$("log").innerHTML+="<br>"+t;$("log").scrollTop=1e9;}
+boot();
+</script>
+</body>
+</html>

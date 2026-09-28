@@ -1,0 +1,679 @@
+{
+  "source_file": "templateB.docx",
+  "headings": [
+    {
+      "idx": 50,
+      "level": 1,
+      "style_level": null,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "1绪论1"
+    },
+    {
+      "idx": 51,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "1.1研究的背景及意义1"
+    },
+    {
+      "idx": 52,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "1.2国内外研究现状及发展趋势1"
+    },
+    {
+      "idx": 53,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "1.3主要内容与创新点2"
+    },
+    {
+      "idx": 54,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "1.4本文组织结构2"
+    },
+    {
+      "idx": 55,
+      "level": 1,
+      "style_level": null,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "2相关知识与问题描述3"
+    },
+    {
+      "idx": 56,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "2.1关键概念13"
+    },
+    {
+      "idx": 57,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "2.2关键概念23"
+    },
+    {
+      "idx": 58,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "2.3本章小结4"
+    },
+    {
+      "idx": 59,
+      "level": 1,
+      "style_level": null,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "3方法概述5"
+    },
+    {
+      "idx": 60,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "3.1深度强化学习概述与适用性分析5"
+    },
+    {
+      "idx": 61,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "3.2问题分解与课题流程5"
+    },
+    {
+      "idx": 62,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "3.3本章小结5"
+    },
+    {
+      "idx": 63,
+      "level": 1,
+      "style_level": null,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "4数据处理6"
+    },
+    {
+      "idx": 64,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "4.1数据结构化6"
+    },
+    {
+      "idx": 65,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "4.2数据缺乏问题及应对7"
+    },
+    {
+      "idx": 66,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "4.3本章小结7"
+    },
+    {
+      "idx": 67,
+      "level": 1,
+      "style_level": null,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "5训练与测试8"
+    },
+    {
+      "idx": 68,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "5.1训练部分8"
+    },
+    {
+      "idx": 69,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "5.2测试部分8"
+    },
+    {
+      "idx": 70,
+      "level": 2,
+      "style_level": null,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "5.3本章小结9"
+    },
+    {
+      "idx": 71,
+      "level": 1,
+      "style_level": null,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "6总结与展望10"
+    },
+    {
+      "idx": 78,
+      "level": 1,
+      "style_level": 1,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "绪论"
+    },
+    {
+      "idx": 80,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "研究的背景及意义"
+    },
+    {
+      "idx": 85,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "国内外研究现状及发展趋势"
+    },
+    {
+      "idx": 91,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "主要内容与创新点"
+    },
+    {
+      "idx": 93,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "本文组织结构"
+    },
+    {
+      "idx": 103,
+      "level": 1,
+      "style_level": 1,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "相关知识与问题描述"
+    },
+    {
+      "idx": 105,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "关键概念1"
+    },
+    {
+      "idx": 106,
+      "level": 3,
+      "style_level": 3,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "分概念1"
+    },
+    {
+      "idx": 107,
+      "level": 4,
+      "style_level": 4,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "分分概念1"
+    },
+    {
+      "idx": 109,
+      "level": 4,
+      "style_level": 4,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "分分概念1"
+    },
+    {
+      "idx": 111,
+      "level": 3,
+      "style_level": 3,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "分概念2"
+    },
+    {
+      "idx": 113,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "关键概念2"
+    },
+    {
+      "idx": 119,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "本章小结"
+    },
+    {
+      "idx": 122,
+      "level": 1,
+      "style_level": 1,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "方法概述"
+    },
+    {
+      "idx": 124,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "深度强化学习概述与适用性分析"
+    },
+    {
+      "idx": 126,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "问题分解与课题流程"
+    },
+    {
+      "idx": 128,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "本章小结"
+    },
+    {
+      "idx": 131,
+      "level": 1,
+      "style_level": 1,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "数据处理"
+    },
+    {
+      "idx": 133,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "数据结构化"
+    },
+    {
+      "idx": 140,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "数据缺乏问题及应对"
+    },
+    {
+      "idx": 142,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "本章小结"
+    },
+    {
+      "idx": 145,
+      "level": 1,
+      "style_level": 1,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "训练与测试"
+    },
+    {
+      "idx": 147,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "训练部分"
+    },
+    {
+      "idx": 151,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "测试部分"
+    },
+    {
+      "idx": 155,
+      "level": 2,
+      "style_level": 2,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "本章小结"
+    },
+    {
+      "idx": 158,
+      "level": 1,
+      "style_level": 1,
+      "text_level": null,
+      "auto_numbered": true,
+      "text": "总结与展望"
+    }
+  ],
+  "captions": [
+    {
+      "idx": 116,
+      "kind": "figure",
+      "text": "图 21  UCB结构",
+      "num": "21",
+      "sep": " "
+    },
+    {
+      "idx": 135,
+      "kind": "table",
+      "text": "表 41   Tab数与标号的对应关系表",
+      "num": "41",
+      "sep": " "
+    },
+    {
+      "idx": 150,
+      "kind": "figure",
+      "text": "图 71  训练过程中每次探索的平均奖励",
+      "num": "71",
+      "sep": " "
+    },
+    {
+      "idx": 154,
+      "kind": "figure",
+      "text": "图 74  测试中每次探索找到的最小ICN",
+      "num": "74",
+      "sep": " "
+    }
+  ],
+  "figures": [
+    {
+      "idx": 115,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        8.99
+      ]
+    },
+    {
+      "idx": 149,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        14.64
+      ]
+    },
+    {
+      "idx": 153,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        14.64
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "flow_idx": 11,
+      "rows": 5,
+      "cols": 2
+    },
+    {
+      "flow_idx": 136,
+      "rows": 12,
+      "cols": 3
+    }
+  ],
+  "specials": [
+    {
+      "idx": 40,
+      "role": "abstract",
+      "text": "Abstract"
+    },
+    {
+      "idx": 72,
+      "role": "acknowledgement",
+      "text": "致谢11"
+    },
+    {
+      "idx": 73,
+      "role": "bibliography",
+      "text": "参考文献12"
+    },
+    {
+      "idx": 169,
+      "role": "acknowledgement",
+      "text": "致谢"
+    },
+    {
+      "idx": 174,
+      "role": "bibliography",
+      "text": "参考文献"
+    }
+  ],
+  "code_blocks": [],
+  "ambiguities": [
+    {
+      "idx": 5,
+      "type": "possible-heading",
+      "text": "本科生毕业设计[论文]",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 8,
+      "type": "possible-heading",
+      "text": "基于深度学习的减轻串扰DDR5设计",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 13,
+      "type": "possible-heading",
+      "text": "年   月   日",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 17,
+      "type": "possible-heading",
+      "text": "学位论文原创性声明",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 23,
+      "type": "possible-heading",
+      "text": "学位论文版权使用授权书",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 34,
+      "type": "possible-heading",
+      "text": "摘    要",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 38,
+      "type": "possible-heading",
+      "text": "关键词：关键词1；关键词2；关键词3；关键词4",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 47,
+      "type": "possible-heading",
+      "text": "目    录",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 48,
+      "type": "possible-heading",
+      "text": "摘要Ⅰ",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 49,
+      "type": "possible-heading",
+      "text": "AbstractⅡ",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    },
+    {
+      "idx": 50,
+      "type": "heading-without-style",
+      "text": "1绪论1",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 51,
+      "type": "heading-without-style",
+      "text": "1.1研究的背景及意义1",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 52,
+      "type": "heading-without-style",
+      "text": "1.2国内外研究现状及发展趋势1",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 53,
+      "type": "heading-without-style",
+      "text": "1.3主要内容与创新点2",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 54,
+      "type": "heading-without-style",
+      "text": "1.4本文组织结构2",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 55,
+      "type": "heading-without-style",
+      "text": "2相关知识与问题描述3",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 56,
+      "type": "heading-without-style",
+      "text": "2.1关键概念13",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 57,
+      "type": "heading-without-style",
+      "text": "2.2关键概念23",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 58,
+      "type": "heading-without-style",
+      "text": "2.3本章小结4",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 59,
+      "type": "heading-without-style",
+      "text": "3方法概述5",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 60,
+      "type": "heading-without-style",
+      "text": "3.1深度强化学习概述与适用性分析5",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 61,
+      "type": "heading-without-style",
+      "text": "3.2问题分解与课题流程5",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 62,
+      "type": "heading-without-style",
+      "text": "3.3本章小结5",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 63,
+      "type": "heading-without-style",
+      "text": "4数据处理6",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 64,
+      "type": "heading-without-style",
+      "text": "4.1数据结构化6",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 65,
+      "type": "heading-without-style",
+      "text": "4.2数据缺乏问题及应对7",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 66,
+      "type": "heading-without-style",
+      "text": "4.3本章小结7",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 67,
+      "type": "heading-without-style",
+      "text": "5训练与测试8",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 68,
+      "type": "heading-without-style",
+      "text": "5.1训练部分8",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 69,
+      "type": "heading-without-style",
+      "text": "5.2测试部分8",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 70,
+      "type": "heading-without-style",
+      "text": "5.3本章小结9",
+      "reason": "无标题样式，按文本编号推断"
+    },
+    {
+      "idx": 71,
+      "type": "heading-without-style",
+      "text": "6总结与展望10",
+      "reason": "无标题样式，按文本编号推断"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "source_file": "template.docx",
+  "headings": [
+    {
+      "idx": 1,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "1 Introduction"
+    },
+    {
+      "idx": 8,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "2 Methods"
+    }
+  ],
+  "captions": [
+    {
+      "idx": 3,
+      "kind": "table",
+      "text": "表1：Parameter settings",
+      "num": "1",
+      "sep": "："
+    },
+    {
+      "idx": 6,
+      "kind": "figure",
+      "text": "图1：Pipeline of the framework",
+      "num": "1",
+      "sep": "："
+    },
+    {
+      "idx": 10,
+      "kind": "table",
+      "text": "表2：Parameter settings",
+      "num": "2",
+      "sep": "："
+    },
+    {
+      "idx": 13,
+      "kind": "figure",
+      "text": "图2：Pipeline of the framework",
+      "num": "2",
+      "sep": "："
+    }
+  ],
+  "figures": [
+    {
+      "idx": 5,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        10.0
+      ]
+    },
+    {
+      "idx": 12,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        10.0
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "flow_idx": 4,
+      "rows": 2,
+      "cols": 2
+    },
+    {
+      "flow_idx": 11,
+      "rows": 2,
+      "cols": 2
+    }
+  ],
+  "specials": [],
+  "code_blocks": [],
+  "ambiguities": [
+    {
+      "idx": 0,
+      "type": "possible-heading",
+      "text": "A Study on System Modeling",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    }
+  ]
+}

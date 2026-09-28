@@ -1,0 +1,12 @@
+{
+ "figures.width_rule.value": 12.0,
+ "meta.doc_stats.images": {
+  "op": ">=",
+  "value": 20
+ },
+ "meta.doc_stats.captions_figure": {
+  "op": ">=",
+  "value": 20
+ },
+ "captions.figure.numbering.chapter_linked": true
+}

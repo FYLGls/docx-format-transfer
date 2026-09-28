@@ -1,0 +1,194 @@
+{
+  "source_file": "template.docx",
+  "headings": [
+    {
+      "idx": 5,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "第1章 绪论"
+    },
+    {
+      "idx": 6,
+      "level": 2,
+      "style_level": 2,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "1.1 研究内容概述"
+    },
+    {
+      "idx": 7,
+      "level": 3,
+      "style_level": 3,
+      "text_level": 3,
+      "auto_numbered": false,
+      "text": "1.1.1 具体方法说明"
+    },
+    {
+      "idx": 17,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "第2章 实验研究"
+    },
+    {
+      "idx": 18,
+      "level": 2,
+      "style_level": 2,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "2.1 研究内容概述"
+    },
+    {
+      "idx": 19,
+      "level": 3,
+      "style_level": 3,
+      "text_level": 3,
+      "auto_numbered": false,
+      "text": "2.1.1 具体方法说明"
+    },
+    {
+      "idx": 29,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "第3章 实验研究"
+    },
+    {
+      "idx": 30,
+      "level": 2,
+      "style_level": 2,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "3.1 研究内容概述"
+    },
+    {
+      "idx": 31,
+      "level": 3,
+      "style_level": 3,
+      "text_level": 3,
+      "auto_numbered": false,
+      "text": "3.1.1 具体方法说明"
+    }
+  ],
+  "captions": [
+    {
+      "idx": 11,
+      "kind": "figure",
+      "text": "图1-1 系统总体架构示意图",
+      "num": "1-1",
+      "sep": " "
+    },
+    {
+      "idx": 13,
+      "kind": "table",
+      "text": "表1-1 实验参数设置",
+      "num": "1-1",
+      "sep": " "
+    },
+    {
+      "idx": 23,
+      "kind": "figure",
+      "text": "图2-1 系统总体架构示意图",
+      "num": "2-1",
+      "sep": " "
+    },
+    {
+      "idx": 25,
+      "kind": "table",
+      "text": "表2-1 实验参数设置",
+      "num": "2-1",
+      "sep": " "
+    },
+    {
+      "idx": 35,
+      "kind": "figure",
+      "text": "图3-1 系统总体架构示意图",
+      "num": "3-1",
+      "sep": " "
+    },
+    {
+      "idx": 37,
+      "kind": "table",
+      "text": "表3-1 实验参数设置",
+      "num": "3-1",
+      "sep": " "
+    }
+  ],
+  "figures": [
+    {
+      "idx": 10,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        14.0
+      ]
+    },
+    {
+      "idx": 22,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        14.0
+      ]
+    },
+    {
+      "idx": 34,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        14.0
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "flow_idx": 14,
+      "rows": 3,
+      "cols": 3
+    },
+    {
+      "flow_idx": 26,
+      "rows": 3,
+      "cols": 3
+    },
+    {
+      "flow_idx": 38,
+      "rows": 3,
+      "cols": 3
+    },
+    {
+      "flow_idx": 45,
+      "rows": 1,
+      "cols": 1
+    }
+  ],
+  "specials": [
+    {
+      "idx": 2,
+      "role": "toc",
+      "text": "目 录"
+    },
+    {
+      "idx": 41,
+      "role": "bibliography",
+      "text": "参考文献"
+    }
+  ],
+  "code_blocks": [
+    [
+      45
+    ]
+  ],
+  "ambiguities": [
+    {
+      "idx": 0,
+      "type": "possible-heading",
+      "text": "基于深度学习的系统建模研究",
+      "reason": "加粗/大字号短段落，可能是未标样式标题"
+    }
+  ]
+}

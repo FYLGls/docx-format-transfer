@@ -1,0 +1,8 @@
+{
+ "headings.level1.numbering.pattern": "{n}",
+ "figures.width_rule.value": 12.5,
+ "captions.figure.numbering.mode": "manual",
+ "captions.figure.numbering.chapter_linked": false,
+ "captions.figure.separator": " ",
+ "tables.three_line.enabled": true
+}

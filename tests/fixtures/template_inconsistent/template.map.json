@@ -1,0 +1,162 @@
+{
+  "source_file": "template.docx",
+  "headings": [],
+  "captions": [
+    {
+      "idx": 1,
+      "kind": "figure",
+      "text": "图1 正常题注",
+      "num": "1",
+      "sep": " "
+    },
+    {
+      "idx": 3,
+      "kind": "figure",
+      "text": "图2 正常题注",
+      "num": "2",
+      "sep": " "
+    },
+    {
+      "idx": 5,
+      "kind": "figure",
+      "text": "图3 正常题注",
+      "num": "3",
+      "sep": " "
+    },
+    {
+      "idx": 7,
+      "kind": "figure",
+      "text": "图4 正常题注",
+      "num": "4",
+      "sep": " "
+    },
+    {
+      "idx": 9,
+      "kind": "figure",
+      "text": "图5 正常题注",
+      "num": "5",
+      "sep": " "
+    },
+    {
+      "idx": 11,
+      "kind": "figure",
+      "text": "图6 正常题注",
+      "num": "6",
+      "sep": " "
+    },
+    {
+      "idx": 13,
+      "kind": "figure",
+      "text": "图7 正常题注",
+      "num": "7",
+      "sep": " "
+    },
+    {
+      "idx": 15,
+      "kind": "figure",
+      "text": "图8 正常题注",
+      "num": "8",
+      "sep": " "
+    },
+    {
+      "idx": 17,
+      "kind": "figure",
+      "text": "图9 正常题注",
+      "num": "9",
+      "sep": " "
+    },
+    {
+      "idx": 19,
+      "kind": "figure",
+      "text": "图10离群无空格题注",
+      "num": "10",
+      "sep": ""
+    }
+  ],
+  "figures": [
+    {
+      "idx": 0,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        13.0
+      ]
+    },
+    {
+      "idx": 2,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        13.0
+      ]
+    },
+    {
+      "idx": 4,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        13.0
+      ]
+    },
+    {
+      "idx": 6,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        13.0
+      ]
+    },
+    {
+      "idx": 8,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        13.0
+      ]
+    },
+    {
+      "idx": 10,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        13.0
+      ]
+    },
+    {
+      "idx": 12,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        13.0
+      ]
+    },
+    {
+      "idx": 14,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        13.0
+      ]
+    },
+    {
+      "idx": 16,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        13.0
+      ]
+    },
+    {
+      "idx": 18,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        13.0
+      ]
+    }
+  ],
+  "tables": [],
+  "specials": [],
+  "code_blocks": [],
+  "ambiguities": []
+}

@@ -1,0 +1,163 @@
+{
+  "source_file": "template.docx",
+  "headings": [
+    {
+      "idx": 3,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "1 问题重述与分析"
+    },
+    {
+      "idx": 4,
+      "level": 2,
+      "style_level": 2,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "1.1 子问题分析"
+    },
+    {
+      "idx": 10,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "2 模型建立与求解"
+    },
+    {
+      "idx": 11,
+      "level": 2,
+      "style_level": 2,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "2.1 子问题分析"
+    },
+    {
+      "idx": 17,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "3 模型建立与求解"
+    },
+    {
+      "idx": 18,
+      "level": 2,
+      "style_level": 2,
+      "text_level": 2,
+      "auto_numbered": false,
+      "text": "3.1 子问题分析"
+    }
+  ],
+  "captions": [
+    {
+      "idx": 7,
+      "kind": "figure",
+      "text": "图1 求解流程示意",
+      "num": "1",
+      "sep": " "
+    },
+    {
+      "idx": 8,
+      "kind": "table",
+      "text": "表1 灵敏度分析结果",
+      "num": "1",
+      "sep": " "
+    },
+    {
+      "idx": 14,
+      "kind": "figure",
+      "text": "图2 求解流程示意",
+      "num": "2",
+      "sep": " "
+    },
+    {
+      "idx": 15,
+      "kind": "table",
+      "text": "表2 灵敏度分析结果",
+      "num": "2",
+      "sep": " "
+    },
+    {
+      "idx": 21,
+      "kind": "figure",
+      "text": "图3 求解流程示意",
+      "num": "3",
+      "sep": " "
+    },
+    {
+      "idx": 22,
+      "kind": "table",
+      "text": "表3 灵敏度分析结果",
+      "num": "3",
+      "sep": " "
+    }
+  ],
+  "figures": [
+    {
+      "idx": 6,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        12.0
+      ]
+    },
+    {
+      "idx": 13,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        12.0
+      ]
+    },
+    {
+      "idx": 20,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        12.0
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "flow_idx": 9,
+      "rows": 2,
+      "cols": 3
+    },
+    {
+      "flow_idx": 16,
+      "rows": 2,
+      "cols": 3
+    },
+    {
+      "flow_idx": 23,
+      "rows": 2,
+      "cols": 3
+    },
+    {
+      "flow_idx": 25,
+      "rows": 1,
+      "cols": 1
+    }
+  ],
+  "specials": [
+    {
+      "idx": 0,
+      "role": "abstract",
+      "text": "摘 要"
+    },
+    {
+      "idx": 24,
+      "role": "appendix",
+      "text": "附录"
+    }
+  ],
+  "code_blocks": [
+    [
+      25
+    ]
+  ],
+  "ambiguities": []
+}

@@ -1,0 +1,6 @@
+{
+ "headings.level2.numbering.pattern": "{c}、",
+ "headings.level3.numbering.pattern": "（{c2}）",
+ "captions.figure.numbering.chapter_linked": false,
+ "figures.width_rule.value": 12.0
+}

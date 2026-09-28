@@ -1,0 +1,363 @@
+{
+  "schema_version": "1.0",
+  "meta": {
+    "source_file": "v2_no_caption.docx",
+    "extracted_at": "2026-09-28T21:07:52",
+    "generator": "extract_format.py 1.0",
+    "doc_stats": {
+      "sections": 1,
+      "paragraphs": 26,
+      "images": 3,
+      "tables": 2,
+      "captions_figure": 0,
+      "captions_table": 2,
+      "formulas_omml": 0,
+      "formulas_ole": 0,
+      "code_blocks": 1
+    }
+  },
+  "flags": [],
+  "dimensions_absent": [
+    "formulas",
+    "toc",
+    "bibliography"
+  ],
+  "page": {
+    "size": {
+      "width_cm": 21.0,
+      "height_cm": 29.7,
+      "orientation": "portrait",
+      "mixed_orientation": false,
+      "confidence": "high",
+      "evidence": "1/1 节"
+    },
+    "margins": {
+      "top_cm": 2.54,
+      "bottom_cm": 2.54,
+      "left_cm": 3.17,
+      "right_cm": 3.17,
+      "gutter_cm": 0.0,
+      "confidence": "high",
+      "evidence": "1/1 节一致"
+    },
+    "header_footer_distance": {
+      "header_cm": 1.27,
+      "footer_cm": 1.27,
+      "confidence": "high"
+    },
+    "columns": {
+      "count": 1,
+      "confidence": "high"
+    }
+  },
+  "page_numbers": {
+    "cover": {
+      "has_page_number": false,
+      "confidence": "medium",
+      "evidence": "第 1 节页脚无页码域"
+    },
+    "front_matter": null,
+    "body": null
+  },
+  "headers": {
+    "even_odd_different": false,
+    "first_page_different": false,
+    "content_font": null,
+    "content_size_pt": null,
+    "has_rule_line": false,
+    "confidence": "medium"
+  },
+  "headings": {
+    "levels_in_use": [
+      1,
+      2
+    ],
+    "level1": {
+      "style_name": "Heading1",
+      "font_eastasia": {
+        "value": "黑体",
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "font_ascii": null,
+      "size_pt": {
+        "value": 16.0,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "bold": {
+        "value": true,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "italic": null,
+      "align": null,
+      "space_before_pt": {
+        "value": 24.0,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "space_after_pt": {
+        "value": 0.0,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "line_spacing": {
+        "rule": "auto",
+        "value": 1.15
+      },
+      "page_break_before": null,
+      "keep_next": {
+        "value": true,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "keep_lines": {
+        "value": true,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "numbering": {
+        "mode": "manual",
+        "pattern": "{n}",
+        "chapter_linked": false,
+        "confidence": "high",
+        "evidence": "3/3 个标题带编号"
+      }
+    },
+    "level2": {
+      "style_name": "Heading2",
+      "font_eastasia": {
+        "value": "黑体",
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "font_ascii": null,
+      "size_pt": {
+        "value": 14.0,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "bold": {
+        "value": true,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "italic": null,
+      "align": null,
+      "space_before_pt": {
+        "value": 10.0,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "space_after_pt": {
+        "value": 0.0,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "line_spacing": {
+        "rule": "auto",
+        "value": 1.15
+      },
+      "page_break_before": null,
+      "keep_next": {
+        "value": true,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "keep_lines": {
+        "value": true,
+        "confidence": "high",
+        "evidence": "3/3"
+      },
+      "numbering": {
+        "mode": "manual",
+        "pattern": "{n}.{n2}",
+        "chapter_linked": true,
+        "confidence": "high",
+        "evidence": "3/3 个标题带编号"
+      }
+    }
+  },
+  "body": {
+    "font_eastasia": {
+      "value": "宋体",
+      "confidence": "medium",
+      "evidence": "10/15"
+    },
+    "font_ascii": {
+      "value": "Consolas",
+      "confidence": "high",
+      "evidence": "4/4"
+    },
+    "size_pt": {
+      "value": 12.0,
+      "confidence": "medium",
+      "evidence": "10/15"
+    },
+    "bold": {
+      "value": true,
+      "confidence": "low",
+      "evidence": "1/1"
+    },
+    "line_spacing": {
+      "rule": "auto",
+      "value": 1.5
+    },
+    "first_line_indent_chars": {
+      "value": 2.0,
+      "confidence": "high",
+      "evidence": "7/7 段"
+    },
+    "align": {
+      "value": "both",
+      "confidence": "medium",
+      "evidence": "7/8"
+    },
+    "widow_control": null,
+    "confidence": "high",
+    "evidence": "15 段正文样本"
+  },
+  "figures": {
+    "width_rule": {
+      "type": "fixed",
+      "value": 13.0,
+      "confidence": "high",
+      "evidence": "3/3 张图"
+    },
+    "align": {
+      "value": "center",
+      "confidence": "high",
+      "evidence": "3/3"
+    },
+    "keep_with_caption": null,
+    "space_before_pt": null,
+    "space_after_pt": null
+  },
+  "captions": {
+    "table": {
+      "label": "表",
+      "position": "below",
+      "numbering": {
+        "mode": "manual",
+        "chapter_linked": false
+      },
+      "format_template": "表{index}{sep}{text}",
+      "separator": " ",
+      "font_eastasia": {
+        "value": "宋体",
+        "confidence": "medium",
+        "evidence": "2/2"
+      },
+      "font_ascii": null,
+      "size_pt": {
+        "value": 12.0,
+        "confidence": "medium",
+        "evidence": "2/2"
+      },
+      "bold": null,
+      "align": {
+        "value": "both",
+        "confidence": "medium",
+        "evidence": "2/2"
+      },
+      "confidence": "medium",
+      "evidence": "2 个表题注，位置 2/2，分隔符 2/2"
+    },
+    "equation": {
+      "template": null,
+      "position": "right",
+      "confidence": "low",
+      "evidence": "0 个编号公式"
+    }
+  },
+  "tables": {
+    "border_rule": "none",
+    "three_line": {
+      "enabled": false,
+      "top_bottom_pt": null,
+      "header_underline_pt": null,
+      "confidence": "medium",
+      "evidence": "2/2 张表为三线表"
+    },
+    "header_row": {
+      "bold": {
+        "value": true,
+        "confidence": "medium",
+        "evidence": "2/2"
+      },
+      "align": null,
+      "shading_fill": null
+    },
+    "repeat_header": {
+      "value": false,
+      "confidence": "medium",
+      "evidence": "2/2"
+    },
+    "cant_split_rows": {
+      "value": false,
+      "confidence": "medium",
+      "evidence": "2/2"
+    },
+    "keep_caption_with_table": null,
+    "continuation_convention": {
+      "detected": false,
+      "label": null
+    },
+    "cell_font_eastasia": null,
+    "cell_size_pt": {
+      "value": 10.5,
+      "confidence": "high",
+      "evidence": "21/21"
+    },
+    "cell_align": null,
+    "width_mode": {
+      "type": "auto",
+      "value": null
+    }
+  },
+  "formulas": {
+    "omml_font": null,
+    "omml_size_pt": null,
+    "align": "center",
+    "number_position": "right",
+    "ole_detected": false,
+    "pict_detected": false,
+    "counts": {
+      "omml": 0,
+      "omathpara": 0,
+      "ole": 0,
+      "pict": 0
+    }
+  },
+  "code_blocks": {
+    "detected": true,
+    "box_style": "none",
+    "font_ascii": {
+      "value": "Consolas",
+      "confidence": "high",
+      "evidence": "4/4"
+    },
+    "size_pt": {
+      "value": 10.5,
+      "confidence": "high",
+      "evidence": "4/4"
+    },
+    "line_spacing_single": true,
+    "shading_fill": null,
+    "confidence": "low",
+    "evidence": "1 个代码块"
+  },
+  "bibliography": {
+    "detected": false
+  },
+  "toc": {
+    "mode": null,
+    "depth": null,
+    "leader": "dot"
+  },
+  "cross_references": {
+    "mode": "text",
+    "count": 3
+  }
+}

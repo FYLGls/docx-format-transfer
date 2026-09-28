@@ -1,0 +1,7 @@
+{
+ "formulas.counts.omathpara": {
+  "op": ">=",
+  "value": 3
+ },
+ "formulas.omml_font.value": "Cambria Math"
+}

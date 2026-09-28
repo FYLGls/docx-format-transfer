@@ -1,0 +1,164 @@
+{
+ "rules": {
+  "page.margins.top_cm": {
+   "value": 2.5,
+   "source": "格式要求",
+   "what": "页边距 top=2.5cm",
+   "evidence": "论文一律采用A4纸，页边距上下2.5厘米，左右3厘米"
+  },
+  "page.margins.bottom_cm": {
+   "value": 2.5,
+   "source": "格式要求",
+   "what": "页边距 bottom=2.5cm",
+   "evidence": "论文一律采用A4纸，页边距上下2.5厘米，左右3厘米"
+  },
+  "page.margins.left_cm": {
+   "value": 3.0,
+   "source": "格式要求",
+   "what": "页边距 left=3.0cm",
+   "evidence": "论文一律采用A4纸，页边距上下2.5厘米，左右3厘米"
+  },
+  "page.margins.right_cm": {
+   "value": 3.0,
+   "source": "格式要求",
+   "what": "页边距 right=3.0cm",
+   "evidence": "论文一律采用A4纸，页边距上下2.5厘米，左右3厘米"
+  },
+  "body.line_spacing": {
+   "value": {
+    "rule": "auto",
+    "value": 1.5
+   },
+   "source": "格式要求",
+   "what": "1.5 倍行距",
+   "evidence": "正文采用宋体小四，1.5倍行距，首行缩进2字符"
+  },
+  "body.first_line_indent_chars": {
+   "value": 2.0,
+   "source": "格式要求",
+   "what": "首行缩进 2 字符",
+   "evidence": "正文采用宋体小四，1.5倍行距，首行缩进2字符"
+  },
+  "body.font_eastasia": {
+   "value": "宋体",
+   "source": "格式要求",
+   "what": "字体 宋体",
+   "evidence": "正文采用宋体小四，1.5倍行距，首行缩进2字符"
+  },
+  "headings.level1.font_eastasia": {
+   "value": "黑体",
+   "source": "格式要求",
+   "what": "字体 黑体",
+   "evidence": "一级标题用黑体三号居中，二级标题黑体四号"
+  },
+  "headings.level1.size_pt": {
+   "value": 16,
+   "source": "格式要求",
+   "what": "字号 三号",
+   "evidence": "一级标题用黑体三号居中，二级标题黑体四号"
+  },
+  "headings.level1.align": {
+   "value": "center",
+   "source": "格式要求",
+   "what": "居中",
+   "evidence": "一级标题用黑体三号居中，二级标题黑体四号"
+  },
+  "headings.level2.font_eastasia": {
+   "value": "黑体",
+   "source": "格式要求",
+   "what": "字体 黑体",
+   "evidence": "一级标题用黑体三号居中，二级标题黑体四号"
+  },
+  "headings.level2.size_pt": {
+   "value": 14,
+   "source": "格式要求",
+   "what": "字号 四号",
+   "evidence": "一级标题用黑体三号居中，二级标题黑体四号"
+  },
+  "captions.figure.position": {
+   "value": "below",
+   "source": "格式要求",
+   "what": "图注在图下",
+   "evidence": "图注在图下方，表注在表上方，按图2-1格式编号"
+  },
+  "captions.table.position": {
+   "value": "above",
+   "source": "格式要求",
+   "what": "表注在表上",
+   "evidence": "图注在图下方，表注在表上方，按图2-1格式编号"
+  },
+  "captions.figure.numbering.chapter_linked": {
+   "value": true,
+   "source": "格式要求",
+   "what": "按章编号",
+   "evidence": "图注在图下方，表注在表上方，按图2-1格式编号"
+  },
+  "captions.table.numbering.chapter_linked": {
+   "value": true,
+   "source": "格式要求",
+   "what": "按章编号",
+   "evidence": "图注在图下方，表注在表上方，按图2-1格式编号"
+  },
+  "tables.border_rule": {
+   "value": "three-line",
+   "source": "格式要求",
+   "what": "三线表",
+   "evidence": "表格采用三线表，跨页时重复表头"
+  },
+  "tables.three_line.top_bottom_pt": {
+   "value": 1.5,
+   "source": "格式要求",
+   "what": "三线表",
+   "evidence": "表格采用三线表，跨页时重复表头"
+  },
+  "tables.three_line.header_underline_pt": {
+   "value": 0.75,
+   "source": "格式要求",
+   "what": "三线表",
+   "evidence": "表格采用三线表，跨页时重复表头"
+  },
+  "page_numbers.body.position": {
+   "value": "footer-center",
+   "source": "格式要求",
+   "what": "页码居中",
+   "evidence": "页码居中，阿拉伯数字"
+  },
+  "page_numbers.body.format": {
+   "value": "decimal",
+   "source": "格式要求",
+   "what": "阿拉伯页码",
+   "evidence": "页码居中，阿拉伯数字"
+  },
+  "toc.depth": {
+   "value": 3,
+   "source": "格式要求",
+   "what": "3 级目录",
+   "evidence": "目录为三级目录"
+  },
+  "toc.mode": {
+   "value": "field",
+   "source": "格式要求",
+   "what": "目录",
+   "evidence": "目录为三级目录"
+  },
+  "code_blocks.font_ascii": {
+   "value": "Consolas",
+   "source": "格式要求",
+   "what": "代码等宽字体",
+   "evidence": "代码用等宽字体装框"
+  },
+  "code_blocks.box_style": {
+   "value": "single-cell-table",
+   "source": "格式要求",
+   "what": "代码装框",
+   "evidence": "代码用等宽字体装框"
+  },
+  "bibliography.numbering_format": {
+   "value": "[{n}]",
+   "source": "格式要求",
+   "what": "GB/T 7714 顺序编码",
+   "evidence": "参考文献按GB/T 7714顺序编码"
+  }
+ },
+ "unparsed": []
+}

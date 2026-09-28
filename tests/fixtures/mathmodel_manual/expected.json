@@ -1,0 +1,18 @@
+{
+ "page.margins.top_cm": 2.5,
+ "page.margins.left_cm": 2.5,
+ "headings.level1.size_pt.value": 15.0,
+ "headings.level1.numbering.pattern": "{n}",
+ "headings.level2.size_pt.value": 14.0,
+ "body.size_pt.value": 12.0,
+ "body.first_line_indent_chars.value": 2.0,
+ "figures.width_rule.value": 12.0,
+ "captions.figure.position": "below",
+ "captions.figure.separator": " ",
+ "captions.figure.numbering.mode": "manual",
+ "captions.figure.numbering.chapter_linked": false,
+ "captions.table.position": "above",
+ "tables.three_line.enabled": true,
+ "code_blocks.box_style": "single-cell-table",
+ "formulas.counts.omml": 0
+}

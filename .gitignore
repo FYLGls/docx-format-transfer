@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+run/
+release/*.zip
+release/*.sha256
+tests/fixtures/requirements/
+.DS_Store
+Thumbs.db
+".github/workflows/ 未推送：需 gh auth refresh -s workflow 后再推（见 README）"  

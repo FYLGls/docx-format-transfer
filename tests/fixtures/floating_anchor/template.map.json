@@ -1,0 +1,36 @@
+{
+  "source_file": "template.docx",
+  "headings": [
+    {
+      "idx": 0,
+      "level": 1,
+      "style_level": 1,
+      "text_level": 1,
+      "auto_numbered": false,
+      "text": "1 综述"
+    }
+  ],
+  "captions": [
+    {
+      "idx": 3,
+      "kind": "figure",
+      "text": "图1 总览",
+      "num": "1",
+      "sep": " "
+    }
+  ],
+  "figures": [
+    {
+      "idx": 2,
+      "inline": 1,
+      "anchor": 0,
+      "widths": [
+        13.0
+      ]
+    }
+  ],
+  "tables": [],
+  "specials": [],
+  "code_blocks": [],
+  "ambiguities": []
+}

@@ -1,0 +1,7 @@
+{
+ "dimensions_absent": {
+  "op": "in",
+  "value": "formulas"
+ },
+ "figures.width_rule.value": 12.0
+}
