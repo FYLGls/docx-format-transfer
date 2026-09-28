@@ -78,6 +78,34 @@ button.ghost:disabled{color:#b9c6e4;border-color:#b9c6e4}
 .warnline{font-size:11px;color:var(--red);width:100%;padding-left:40px}
 .pend{color:var(--gray)}
 #empty{margin:60px auto;text-align:center;color:var(--sub)}
+/* ---------- 三栏：文件 | 对比查看器 | 规则清单 ---------- */
+#left{width:280px;min-width:250px;flex-shrink:0}
+#viewer{flex:1.5;display:flex;flex-direction:column;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;min-width:380px}
+#right{flex:1.1;min-width:480px}
+#vbar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);
+  background:#fbfcfd;flex-wrap:wrap}
+#vbar h2{font-size:14px;font-weight:600}
+#vbar .seg{display:flex;gap:0}
+#vbar .seg button{border-radius:0;font-size:12px;padding:4px 10px;background:#fff;color:var(--ink);
+  border:1px solid var(--line)}
+#vbar .seg button:first-child{border-radius:7px 0 0 7px}
+#vbar .seg button:last-child{border-radius:0 7px 7px 0}
+#vbar .seg button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+#vbar .vstat{font-size:12px;color:var(--sub);flex:1}
+#vbody{flex:1;display:flex;gap:8px;overflow:auto;padding:10px;background:#eef0f3}
+.pane{flex:1;min-width:0;display:flex;flex-direction:column;border:1px solid var(--line);
+  border-radius:8px;background:#fff;overflow:hidden}
+.pane.solo{max-width:820px;margin:0 auto}
+.ptitle{padding:5px 10px;font-size:12px;font-weight:600;color:var(--sub);
+  background:#f7f9fc;border-bottom:1px solid var(--line)}
+.ptitle b{color:var(--ink)}
+.ptitle .badge-after{color:var(--green)}
+.pbody{flex:1;overflow:auto;padding:8px}
+.pbody .docx-wrapper{background:#dfe3e8;padding:12px 0;min-height:100%}
+.pbody .docx-wrapper>section.docx{box-shadow:0 2px 10px rgba(0,0,0,.15);margin-bottom:14px}
+.vempty{margin:60px auto;text-align:center;color:var(--sub)}
+.vnote{font-size:11px;color:var(--sub);padding:4px 10px;background:#fbfcfd;border-top:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -117,9 +145,11 @@ button.ghost:disabled{color:#b9c6e4;border-color:#b9c6e4}
             style="display:none;width:100%;border:1px solid var(--line);border-radius:7px;padding:6px 8px;font-size:12.5px;resize:vertical"></textarea>
         </div>
         <input type="file" id="filePick" accept=".docx,.pdf,.txt,.md,.png,.jpg,.jpeg">
+        <input type="file" id="viewPick" accept=".docx">
         <button class="big" id="btnDetect" onclick="detect()">① 检测模板格式</button>
         <button class="big" id="btnDetectTgt" onclick="detectTarget()" disabled>② 分析目标文档</button>
         <button class="big" id="btnApply" onclick="applyAll()" disabled>③ 开始修改（按右侧顺序执行）</button>
+        <button class="big ghost" id="btnOpenOther" onclick="document.getElementById('viewPick').click()" disabled>📂 在查看器打开其他文档</button>
       </div>
     </div>
     <div class="card">
@@ -130,6 +160,27 @@ button.ghost:disabled{color:#b9c6e4;border-color:#b9c6e4}
       <h3>执行日志</h3>
       <div id="log">等待操作…</div>
     </div>
+  </div>
+
+  <div id="viewer">
+    <div id="vbar">
+      <h2>文档查看器</h2>
+      <span class="seg" id="viewSeg" style="display:none">
+        <button id="segCompare" class="on" onclick="setView('compare')">前后对比</button>
+        <button id="segBefore" onclick="setView('before')">修改前</button>
+        <button id="segAfter" onclick="setView('after')">修改后</button>
+      </span>
+      <span class="vstat" id="vstat">完成 ③ 修改后自动并排展示修改前/后对比</span>
+      <button class="ghost" id="btnRerender" style="display:none" onclick="rerender()">重新渲染</button>
+    </div>
+    <div id="vbody">
+      <div class="vempty" id="vempty">
+        <div style="font-size:40px">📄</div>
+        完成 ③ 开始修改 后，这里自动并排展示<b>修改前 / 修改后</b>对比<br>
+        <span style="font-size:12px">也可点左下「📂 在查看器打开其他文档」查看任意 docx</span>
+      </div>
+    </div>
+    <div class="vnote" id="vnote" style="display:none">渲染由浏览器内嵌 docx 预览库完成，为近似排版；精确效果以 Word/WPS 打开为准。滚动任一栏，另一栏同步滚动。</div>
   </div>
 
   <div id="right">
@@ -178,6 +229,107 @@ async function readND(resp,cb){
 function togglePaste(){
   const t=$("reqText");t.style.display=t.style.display==="none"?"block":"none";
 }
+
+/* ================= 文档查看器（前后对比） ================= */
+let VIEW={mode:"compare",targetPath:null,outputPath:null,outBytes:null,
+          singleBytes:null,singleName:"",docxLib:null,renderSeq:0};
+
+function loadScriptOnce(src,key){
+  return new Promise((res,rej)=>{
+    if(window[key])return res(window[key]);
+    const s=document.createElement("script");
+    s.src=src;
+    s.onload=()=>res(window[key]);
+    s.onerror=()=>rej(new Error("加载失败："+src));
+    document.head.appendChild(s);
+  });
+}
+async function loadDocxLib(){
+  if(VIEW.docxLib)return VIEW.docxLib;
+  await loadScriptOnce("https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js","JSZip");
+  VIEW.docxLib=await loadScriptOnce(
+    "https://cdn.jsdelivr.net/npm/docx-preview@0.3.5/dist/docx-preview.min.js","docx");
+  return VIEW.docxLib;
+}
+async function renderDocxTo(el,src){
+  const lib=await loadDocxLib();
+  let buf;
+  if(src instanceof ArrayBuffer||src instanceof Uint8Array)buf=src;
+  else{
+    const r=await fetch("/api/file?path="+encodeURIComponent(src));
+    if(!r.ok)throw new Error("读取文件失败");
+    buf=await r.arrayBuffer();
+  }
+  el.innerHTML="";
+  await lib.renderAsync(buf,el,null,{
+    inWrapper:true,ignoreLastRenderedPageBreak:false,
+    renderHeaders:true,renderFooters:true,renderFootnotes:true,
+    breakPages:true,experimental:true});
+}
+function setSeg(mode){
+  $("viewSeg").style.display="flex";
+  for(const[id,m]of[["segCompare","compare"],["segBefore","before"],["segAfter","after"]])
+    $(id).classList.toggle("on",m===mode);
+}
+function setView(mode){renderView(mode);}
+async function renderView(mode){
+  if(mode!=="single"&&!VIEW.outputPath&&!VIEW.outBytes){log("还没有修改结果，先完成 ③");return;}
+  VIEW.mode=mode;
+  setSeg(mode);
+  await renderViewNow();
+}
+async function renderViewNow(){
+  const seq=++VIEW.renderSeq;
+  $("vempty").style.display="none";
+  const body=$("vbody");
+  body.innerHTML="";
+  $("vnote").style.display="block";$("btnRerender").style.display="inline-block";
+  const mk=(title,cls)=>{const d=document.createElement("div");d.className="pane "+cls;
+    d.innerHTML=`<div class="ptitle">${title}</div><div class="pbody"></div>`;
+    body.appendChild(d);return d.querySelector(".pbody");};
+  try{
+    if(VIEW.mode==="compare"){
+      $("vstat").textContent="左：修改前 · 右：修改后（滚动联动）";
+      const pb=mk("📄 修改前（原文件）","");
+      const pa=mk("📄 修改后 <span class='badge-after'>✨ 已套用模板格式</span>","");
+      const p1=renderDocxTo(pb,VIEW.targetPath);
+      const p2=renderDocxTo(pa,VIEW.outBytes||VIEW.outputPath);
+      let synced=false;
+      const sync=src=>{if(synced)return;synced=true;
+        const dst=src===pb?pa:pb;dst.scrollTop=src.scrollTop;synced=false;};
+      pb.addEventListener("scroll",()=>sync(pb));pa.addEventListener("scroll",()=>sync(pa));
+      await Promise.all([p1,p2]);
+    }else if(VIEW.mode==="before"){
+      $("vstat").textContent="修改前（原文件）";
+      await renderDocxTo(mk("📄 修改前（原文件）","solo"),VIEW.targetPath);
+    }else if(VIEW.mode==="after"){
+      $("vstat").textContent="修改后（已套用模板格式）";
+      await renderDocxTo(mk("📄 修改后 <span class='badge-after'>✨</span>","solo"),
+        VIEW.outBytes||VIEW.outputPath);
+    }else{ // single 其他文档
+      $("vstat").textContent="查看："+(VIEW.singleName||"文档");
+      await renderDocxTo(mk("📄 "+(VIEW.singleName||"文档"),"solo"),VIEW.singleBytes);
+    }
+  }catch(e){
+    body.innerHTML="";
+    const d=document.createElement("div");d.className="vempty";
+    d.innerHTML="⚠ 渲染失败："+e+"<br><span style='font-size:12px'>可点「重新渲染」重试；精确效果请直接用 Word/WPS 打开文件</span>";
+    body.appendChild(d);
+  }
+  if(seq!==VIEW.renderSeq)return; // 过期渲染丢弃
+}
+function rerender(){renderViewNow();}
+function autoShowCompare(){
+  $("btnOpenOther").disabled=false;
+  renderView("compare").catch(e=>log("⚠ 查看器："+e.message));
+}
+document.getElementById("viewPick").addEventListener("change",async e=>{
+  const f=e.target.files[0];if(!f)return;
+  VIEW.singleBytes=await f.arrayBuffer();VIEW.singleName=f.name;
+  e.target.value="";
+  renderView("single").catch(err=>log("⚠ 查看器："+err.message));
+});
+
 async function detect(){
   const path=$("tplPath").value.trim();
   if(!path)return log("请先填写模板文档路径");
@@ -386,6 +538,9 @@ async function applyAll(){
       }
       log(`验证：通过 ${ev.pass} · 失败 ${ev.fail}（共 ${ev.checks} 项）${ev.fail?"：见各行红标，悬停查看":""}`);
       if(outPath){
+        // 自动打开中间面板的前后对比
+        VIEW.targetPath=target;VIEW.outputPath=outPath;
+        autoShowCompare();
         const a=document.createElement("a");a.className="outlink";a.href="#";
         a.textContent="📄 打开输出文件所在位置："+outPath;
         a.onclick=()=>{alert("输出文件：\n"+outPath+"\n修改报告：\n"+outPath.replace(".formatted.docx",".changes.md"));return false;};

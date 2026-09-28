@@ -105,6 +105,21 @@ class Handler(BaseHTTPRequestHandler):
         elif u.path == "/api/rules":
             self._json({"version": APP_VERSION, "rules": RULES,
                         "default_order": DEFAULT_ORDER})
+        elif u.path == "/api/file":
+            q = urllib.parse.parse_qs(u.query)
+            path = os.path.abspath((q.get("path") or [""])[0])
+            # 仅提供 .docx 文件字节（供查看器渲染）；服务器默认只绑 127.0.0.1
+            if not path.lower().endswith(".docx") or not os.path.isfile(path):
+                self._json({"error": "文件不存在或不是 .docx"}, 404)
+                return
+            data = open(path, "rb").read()
+            self.send_response(200)
+            self.send_header("Content-Type",
+                             "application/vnd.openxmlformats-officedocument."
+                             "wordprocessingml.document")
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
         elif u.path == "/api/listdocs":
             q = urllib.parse.parse_qs(u.query)
             d = (q.get("dir") or [UPLOAD_DIR])[0]

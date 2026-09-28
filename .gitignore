@@ -7,3 +7,4 @@ tests/fixtures/requirements/
 .DS_Store
 Thumbs.db
 ".github/workflows/ 未推送：需 gh auth refresh -s workflow 后再推（见 README）"  
+".github/workflows/ 需 workflow scope 后推送"  
