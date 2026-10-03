@@ -143,5 +143,105 @@ def apply(tgt_b64: str, profile_json: str, order=None, disabled=None,
 
 
 def meta() -> str:
-    return json.dumps({"rules": [r["id"] for r in RULES],
+    """规则元数据单一事实源：完整 RULES（名称/类别/desc/paginated/paths）+ 默认顺序 + 版本。"""
+    version = "dev"
+    vp = os.path.join(os.path.dirname(os.path.abspath(__file__)), "version.txt")
+    if os.path.isfile(vp):
+        version = open(vp, encoding="utf-8").read().strip()
+    return json.dumps({"version": version,
+                       "rules": RULES,
                        "default_order": DEFAULT_ORDER}, ensure_ascii=False)
+
+
+# ---------------------------------------------------------------- 会话式执行（网页版逐条驱动，主线程不冻结）
+_SESSION = {}
+
+
+def begin_apply(tgt_b64: str, profile_json: str, order=None, disabled=None,
+                overrides=None) -> str:
+    """初始化应用会话 → JSON {ready, rule_ids}。后续 apply_next() 逐条驱动。"""
+    import copy as _copy
+    tgt_path = _unwrap_b64(tgt_b64, os.path.join(WORK, "target.docx"))
+    profile = json.loads(profile_json)
+    if isinstance(order, str):
+        order = json.loads(order)
+    if isinstance(disabled, str):
+        disabled = json.loads(disabled)
+    if isinstance(overrides, str):
+        overrides = json.loads(overrides)
+    profile = apply_overrides(profile, overrides or {})
+    applier = Applier(tgt_path, profile)
+    _SESSION.clear()
+    _SESSION.update({"applier": applier, "profile": profile,
+                     "tgt": tgt_path,
+                     "order": order or list(DEFAULT_ORDER),
+                     "disabled": set(disabled or []),
+                     "i": 0})
+    return json.dumps({"ready": True,
+                       "rule_ids": _SESSION["order"]}, ensure_ascii=False)
+
+
+def apply_next() -> str:
+    """执行下一条规则 → JSON {done, id, name, status, changes}"""
+    s = _SESSION
+    if not s.get("applier"):
+        return json.dumps({"done": True, "error": "会话未初始化"})
+    ids = s["order"]
+    while s["i"] < len(ids):
+        rid = ids[s["i"]]
+        s["i"] += 1
+        if rid in s["disabled"]:
+            return json.dumps({"done": False, "id": rid, "status": "skipped",
+                               "changes": 0}, ensure_ascii=False)
+        from apply_format import RULE_BY_ID
+        rule = RULE_BY_ID.get(rid)
+        before = sum(s["applier"].changes.values())
+        try:
+            getattr(s["applier"], rule["fn"])()
+            status = "done"
+        except Exception as e:
+            status = "error"
+            s["applier"].notes.append(f"规则 {rule['name']} 执行失败：{e}")
+        return json.dumps({"done": False, "id": rid,
+                           "name": rule["name"] if rule else rid,
+                           "status": status,
+                           "changes": sum(s["applier"].changes.values()) - before},
+                          ensure_ascii=False)
+    return json.dumps({"done": True}, ensure_ascii=False)
+
+
+def finish_apply() -> str:
+    """落盘 + 验证 → JSON {changes, notes, verify, output_b64}"""
+    s = _SESSION
+    applier = s.get("applier")
+    if not applier:
+        return json.dumps({"error": "会话未初始化"})
+    out_path = os.path.join(WORK, "output.docx")
+    applier.save(out_path)
+    total = sum(v for k, v in applier.changes.items() if not k.startswith("_"))
+    out_ex = Extractor(out_path)
+    checks = fmt_check(s["profile"], out_ex.profile())
+    diffs = content_integrity(s["tgt"], out_path)
+    for key, oa, ob in diffs:
+        checks.append(("FAIL", f"内容完整性-{key}", f"原独有 {oa} / 新独有 {ob}"))
+    if not diffs:
+        checks.append(("PASS", "内容完整性", "正文文字逐字一致"))
+    by_rule = {}
+    for status, cpath, detail in checks:
+        rid = _rule_of_path(cpath) or "_other"
+        slot = by_rule.setdefault(rid, {"pass": 0, "warn": 0, "fail": 0, "details": []})
+        key = {"PASS": "pass", "WARN": "warn", "FAIL": "fail", "SKIP": "pass"}[status]
+        slot[key] += 1
+        if status in ("FAIL", "WARN"):
+            slot["details"].append(f"{cpath}: {detail}")
+    with open(out_path, "rb") as f:
+        out_b64 = base64.b64encode(f.read()).decode("ascii")
+    _SESSION.clear()
+    return json.dumps({
+        "changes": total, "notes": applier.notes,
+        "verify": {"by_rule": by_rule,
+                   "pass": sum(1 for x, *_ in checks if x == "PASS"),
+                   "warn": sum(1 for x, *_ in checks if x == "WARN"),
+                   "fail": sum(1 for x, *_ in checks if x == "FAIL"),
+                   "checks": len(checks)},
+        "output_b64": out_b64}, ensure_ascii=False)

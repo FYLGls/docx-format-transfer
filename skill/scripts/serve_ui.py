@@ -236,6 +236,7 @@ class Handler(BaseHTTPRequestHandler):
                     break
                 self._ndjson({"type": "rule", **res})
             # 落盘
+            os.makedirs(OUT_DIR, exist_ok=True)
             base = os.path.splitext(os.path.basename(target))[0]
             out = os.path.join(OUT_DIR, f"{base}.formatted.docx")
             applier.save(out)
